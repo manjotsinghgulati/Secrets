@@ -18,7 +18,9 @@ const userSchema = new mongoose.Schema({
     password: String
 });
 
-
+// Level - 2 : Encryption
+const secret = "Thisisourlittlesecret";
+userSchema.plugin(encrypt, { secret: secret, encryptedFields: ['password'] });
 
 const User = mongoose.model('User', userSchema);
 
